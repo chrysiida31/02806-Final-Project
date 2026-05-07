@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_2b9d5cf2985eae94eda7417c5792a519 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_2b9d5cf2985eae94eda7417c5792a519" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_2b9d5cf2985eae94eda7417c5792a519 = L.map(
+                "map_2b9d5cf2985eae94eda7417c5792a519",
+                {
+                    center: [55.6761, 12.5683],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 11,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_f0072c41e91c9d7b47b7eee08983f33d = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_f0072c41e91c9d7b47b7eee08983f33d.addTo(map_2b9d5cf2985eae94eda7417c5792a519);
+        
+    
+            var heat_map_3961d67d6fbae5b9e34e436002a2946e = L.heatLayer(
+                [[55.6456, 12.5836, 33.9156470548508], [55.6627, 12.6208, 24.83244925832989], [55.7182, 12.5337, 34.69257899138276], [55.7078, 12.4982, 38.39782756279702], [55.684, 12.59, 22.915936952714535], [55.6996, 12.5481, 27.176314071991563], [55.6624, 12.5167, 29.62510498587463], [55.6872, 12.4915, 20.23780278091682], [55.668, 12.545, 28.673966830797877], [55.7047, 12.577, 21.75048343987486]],
+                {
+  "minOpacity": 0.45,
+  "maxZoom": 13,
+  "radius": 45,
+  "blur": 35,
+}
+            );
+        
+    
+            heat_map_3961d67d6fbae5b9e34e436002a2946e.addTo(map_2b9d5cf2985eae94eda7417c5792a519);
+        
+    
+            var marker_d68cbb2f5c9b900eef7115260a8fcc7c = L.marker(
+                [55.6456, 12.5836],
+                {
+}
+            ).addTo(map_2b9d5cf2985eae94eda7417c5792a519);
+        
+    
+        var popup_71c2520f4336ecd1d30bc995d6878d73 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_59e8a6000e92f644810ef51429163867 = $(`<div id="html_59e8a6000e92f644810ef51429163867" style="width: 100.0%; height: 100.0%;"><b>Amager Vest</b><br>International share: 33.9%<br>International population: 30,131<br>Total population: 88,841</div>`)[0];
+                popup_71c2520f4336ecd1d30bc995d6878d73.setContent(html_59e8a6000e92f644810ef51429163867);
+            
+        
+
+        marker_d68cbb2f5c9b900eef7115260a8fcc7c.bindPopup(popup_71c2520f4336ecd1d30bc995d6878d73)
+        ;
+
+        
+    
+    
+            marker_d68cbb2f5c9b900eef7115260a8fcc7c.bindTooltip(
+                `<div>
+                     Amager Vest
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_b6ff6f01bcc7d13285ad0f7a2b4f81be = L.marker(
+                [55.6627, 12.6208],
+                {
+}
+            ).addTo(map_2b9d5cf2985eae94eda7417c5792a519);
+        
+    
+        var popup_6662e6f75adbf2ffae22c023bdb3b238 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_946e99fcb2781e9fde125b3eea7969d2 = $(`<div id="html_946e99fcb2781e9fde125b3eea7969d2" style="width: 100.0%; height: 100.0%;"><b>Amager Øst</b><br>International share: 24.8%<br>International population: 15,636<br>Total population: 62,966</div>`)[0];
+                popup_6662e6f75adbf2ffae22c023bdb3b238.setContent(html_946e99fcb2781e9fde125b3eea7969d2);
+            
+        
+
+        marker_b6ff6f01bcc7d13285ad0f7a2b4f81be.bindPopup(popup_6662e6f75adbf2ffae22c023bdb3b238)
+        ;
+
+        
+    
+    
+            marker_b6ff6f01bcc7d13285ad0f7a2b4f81be.bindTooltip(
+                `<div>
+                     Amager Øst
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_75447968da99e2a82364c15e4a6281e2 = L.marker(
+                [55.7182, 12.5337],
+                {
+}
+            ).addTo(map_2b9d5cf2985eae94eda7417c5792a519);
+        
+    
+        var popup_126af34dfeead33e4f9c6a3df59e87d8 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0ce1b2eed3ed0e24d0384f94599b60d5 = $(`<div id="html_0ce1b2eed3ed0e24d0384f94599b60d5" style="width: 100.0%; height: 100.0%;"><b>Bispebjerg</b><br>International share: 34.7%<br>International population: 19,083<br>Total population: 55,006</div>`)[0];
+                popup_126af34dfeead33e4f9c6a3df59e87d8.setContent(html_0ce1b2eed3ed0e24d0384f94599b60d5);
+            
+        
+
+        marker_75447968da99e2a82364c15e4a6281e2.bindPopup(popup_126af34dfeead33e4f9c6a3df59e87d8)
+        ;
+
+        
+    
+    
+            marker_75447968da99e2a82364c15e4a6281e2.bindTooltip(
+                `<div>
+                     Bispebjerg
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_d75cbb929b14088a15231256582f0062 = L.marker(
+                [55.7078, 12.4982],
+                {
+}
+            ).addTo(map_2b9d5cf2985eae94eda7417c5792a519);
+        
+    
+        var popup_ecff2280f8cc7e46912893fd76b1b9d5 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_8da6e7c3feb7f4bff18b8e9c495f479f = $(`<div id="html_8da6e7c3feb7f4bff18b8e9c495f479f" style="width: 100.0%; height: 100.0%;"><b>Brønshøj-Husum</b><br>International share: 38.4%<br>International population: 16,968<br>Total population: 44,190</div>`)[0];
+                popup_ecff2280f8cc7e46912893fd76b1b9d5.setContent(html_8da6e7c3feb7f4bff18b8e9c495f479f);
+            
+        
+
+        marker_d75cbb929b14088a15231256582f0062.bindPopup(popup_ecff2280f8cc7e46912893fd76b1b9d5)
+        ;
+
+        
+    
+    
+            marker_d75cbb929b14088a15231256582f0062.bindTooltip(
+                `<div>
+                     Brønshøj-Husum
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_ef2cef2921505c48f1e44839468c06c3 = L.marker(
+                [55.684, 12.59],
+                {
+}
+            ).addTo(map_2b9d5cf2985eae94eda7417c5792a519);
+        
+    
+        var popup_461354d3ddb8a980b885e5de89f3d2e1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_45d2f4de60d7e449ecaa78e467f0e7d1 = $(`<div id="html_45d2f4de60d7e449ecaa78e467f0e7d1" style="width: 100.0%; height: 100.0%;"><b>Indre By</b><br>International share: 22.9%<br>International population: 13,085<br>Total population: 57,100</div>`)[0];
+                popup_461354d3ddb8a980b885e5de89f3d2e1.setContent(html_45d2f4de60d7e449ecaa78e467f0e7d1);
+            
+        
+
+        marker_ef2cef2921505c48f1e44839468c06c3.bindPopup(popup_461354d3ddb8a980b885e5de89f3d2e1)
+        ;
+
+        
+    
+    
+            marker_ef2cef2921505c48f1e44839468c06c3.bindTooltip(
+                `<div>
+                     Indre By
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_a536e7a6b016e4131c536cbd30dc5da6 = L.marker(
+                [55.6996, 12.5481],
+                {
+}
+            ).addTo(map_2b9d5cf2985eae94eda7417c5792a519);
+        
+    
+        var popup_8957cc5f885fd8f528a3614513de5f43 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9493a68f96b20431ef6a1e7cfe0971b5 = $(`<div id="html_9493a68f96b20431ef6a1e7cfe0971b5" style="width: 100.0%; height: 100.0%;"><b>Nørrebro</b><br>International share: 27.2%<br>International population: 21,653<br>Total population: 79,676</div>`)[0];
+                popup_8957cc5f885fd8f528a3614513de5f43.setContent(html_9493a68f96b20431ef6a1e7cfe0971b5);
+            
+        
+
+        marker_a536e7a6b016e4131c536cbd30dc5da6.bindPopup(popup_8957cc5f885fd8f528a3614513de5f43)
+        ;
+
+        
+    
+    
+            marker_a536e7a6b016e4131c536cbd30dc5da6.bindTooltip(
+                `<div>
+                     Nørrebro
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_0296cfe22411d73dfb74aee7a36048f4 = L.marker(
+                [55.6624, 12.5167],
+                {
+}
+            ).addTo(map_2b9d5cf2985eae94eda7417c5792a519);
+        
+    
+        var popup_61dc96c751ba235734c1be06c4e48fcf = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ecf3e0a0f09964c8d29fb700c628f113 = $(`<div id="html_ecf3e0a0f09964c8d29fb700c628f113" style="width: 100.0%; height: 100.0%;"><b>Valby</b><br>International share: 29.6%<br>International population: 19,400<br>Total population: 65,485</div>`)[0];
+                popup_61dc96c751ba235734c1be06c4e48fcf.setContent(html_ecf3e0a0f09964c8d29fb700c628f113);
+            
+        
+
+        marker_0296cfe22411d73dfb74aee7a36048f4.bindPopup(popup_61dc96c751ba235734c1be06c4e48fcf)
+        ;
+
+        
+    
+    
+            marker_0296cfe22411d73dfb74aee7a36048f4.bindTooltip(
+                `<div>
+                     Valby
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_90fb01aeead6002d3bd4cb51809ccfdd = L.marker(
+                [55.6872, 12.4915],
+                {
+}
+            ).addTo(map_2b9d5cf2985eae94eda7417c5792a519);
+        
+    
+        var popup_751d166a5b39d07f20448c0ccf4ea07a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5d9a7d9b7219aa6f604d6c579152acf7 = $(`<div id="html_5d9a7d9b7219aa6f604d6c579152acf7" style="width: 100.0%; height: 100.0%;"><b>Vanløse</b><br>International share: 20.2%<br>International population: 8,238<br>Total population: 40,706</div>`)[0];
+                popup_751d166a5b39d07f20448c0ccf4ea07a.setContent(html_5d9a7d9b7219aa6f604d6c579152acf7);
+            
+        
+
+        marker_90fb01aeead6002d3bd4cb51809ccfdd.bindPopup(popup_751d166a5b39d07f20448c0ccf4ea07a)
+        ;
+
+        
+    
+    
+            marker_90fb01aeead6002d3bd4cb51809ccfdd.bindTooltip(
+                `<div>
+                     Vanløse
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_06a53e20b141ac18a6a5d7121859d32d = L.marker(
+                [55.668, 12.545],
+                {
+}
+            ).addTo(map_2b9d5cf2985eae94eda7417c5792a519);
+        
+    
+        var popup_7a8cad97ac07a9ea0e970d50c2bcee6b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_51c4ef2f135bdfe1c2da4261bc1efc83 = $(`<div id="html_51c4ef2f135bdfe1c2da4261bc1efc83" style="width: 100.0%; height: 100.0%;"><b>Vesterbro/Kongens Enghave</b><br>International share: 28.7%<br>International population: 23,410<br>Total population: 81,642</div>`)[0];
+                popup_7a8cad97ac07a9ea0e970d50c2bcee6b.setContent(html_51c4ef2f135bdfe1c2da4261bc1efc83);
+            
+        
+
+        marker_06a53e20b141ac18a6a5d7121859d32d.bindPopup(popup_7a8cad97ac07a9ea0e970d50c2bcee6b)
+        ;
+
+        
+    
+    
+            marker_06a53e20b141ac18a6a5d7121859d32d.bindTooltip(
+                `<div>
+                     Vesterbro/Kongens Enghave
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_2f47673fde7f760b7eab1d70fefd8b23 = L.marker(
+                [55.7047, 12.577],
+                {
+}
+            ).addTo(map_2b9d5cf2985eae94eda7417c5792a519);
+        
+    
+        var popup_8b9884d699393fd49e32b7bb8a15e7e5 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_25e1309db5fa9be3393c493337d00bb3 = $(`<div id="html_25e1309db5fa9be3393c493337d00bb3" style="width: 100.0%; height: 100.0%;"><b>Østerbro</b><br>International share: 21.8%<br>International population: 17,659<br>Total population: 81,189</div>`)[0];
+                popup_8b9884d699393fd49e32b7bb8a15e7e5.setContent(html_25e1309db5fa9be3393c493337d00bb3);
+            
+        
+
+        marker_2f47673fde7f760b7eab1d70fefd8b23.bindPopup(popup_8b9884d699393fd49e32b7bb8a15e7e5)
+        ;
+
+        
+    
+    
+            marker_2f47673fde7f760b7eab1d70fefd8b23.bindTooltip(
+                `<div>
+                     Østerbro
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>

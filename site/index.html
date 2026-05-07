@@ -4,7 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Copenhagen's Changing Population</title>
-  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
   <style>
     :root { --text:#1f2933; --muted:#667085; --line:#e5e7eb; --bg:#ffffff; --soft:#f7f8fa; --accent:#2563eb; }
     * { box-sizing: border-box; }
@@ -19,15 +18,17 @@
     p { max-width:760px; color:#374151; }
     .lead { font-size:1.2rem; color:#475467; max-width:820px; }
     .note { color:var(--muted); font-size:.95rem; }
-    .chart-card { border:1px solid var(--line); border-radius:14px; padding:18px; margin:22px 0 10px; background:white; }
-    .plot { width:100%; min-height:520px; }
-    img { width:100%; height:auto; border-radius:10px; display:block; }
-    iframe { width:100%; height:560px; border:1px solid var(--line); border-radius:10px; background:white; }
-    .grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
-    .callout { border-left:4px solid var(--accent); padding:8px 0 8px 18px; margin:24px 0; color:#344054; background:#fafafa; }
+    .chart-card { border:1px solid var(--line); border-radius:14px; padding:24px; margin:28px 0 16px; background:white; }
+    img { width:100%; height:auto; border-radius:10px; display:block; min-height:300px; object-fit:contain; }
+    iframe { width:100%; height:620px; border:1px solid var(--line); border-radius:10px; background:white; }
+    .grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+    .callout { border-left:4px solid var(--accent); padding:12px 0 12px 18px; margin:28px 0; color:#344054; background:#fafafa; }
     footer { border-top:1px solid var(--line); margin-top:56px; padding-top:24px; color:var(--muted); font-size:.95rem; }
     code { background:#f2f4f7; padding:2px 5px; border-radius:5px; }
-    @media (max-width:800px) { .grid { grid-template-columns:1fr; } .plot { min-height:420px; } iframe { height:460px; } }
+    ul { color:#374151; max-width:760px; }
+    li { margin:0.5rem 0; }
+    @media (max-width:1200px) { .grid { grid-template-columns:1fr; } }
+    @media (max-width:800px) { .grid { grid-template-columns:1fr; } iframe { height:520px; } }
   </style>
 </head>
 <body>
@@ -36,64 +37,58 @@
     <div class="eyebrow">Data story from the explainer notebook</div>
     <h1>Copenhagen did not just grow. It changed shape.</h1>
     <p class="lead">From 1995 to 2025, Copenhagen became larger and more international. This website follows that change across time, neighbourhoods, and origin communities, using visualizations extracted directly from the project notebook.</p>
-    <p class="note">Structure: a guided slideshow-style narrative with interactive exploration blocks. Visualizations are the notebook outputs, exported as assets and loaded here.</p>
+    <p class="note"><a href="https://github.com/chrysiida31/02806-Final-Project/blob/main/notebooks/copenhagen_full_analysis.ipynb" style="color:var(--accent); text-decoration:none; font-weight:600;">View the explainer notebook on GitHub</a> to see the data analysis, methodology, code, and additional context.</p>
   </div>
 </header>
 <main>
   <section>
     <h2>1. Start with the baseline: the city grew</h2>
-    <p>Before looking at internationalisation, we need the simplest reference point: Copenhagen’s total population. The first interactive chart shows the city-wide trend over three decades. Hover over the points to inspect the year-by-year values.</p>
+    <p>Before looking at internationalisation, we need the simplest reference point: Copenhagen's total population. The first chart shows the city-wide trend over three decades—a clear upward trajectory from 1995 to 2025.</p>
     <div class="chart-card">
-      <!-- PNG exported directly from notebook cell 19. The Plotly output in notebook cell 61 contains empty arrays, so this uses the valid notebook-rendered population trend instead. -->
-      <img src="assets/notebook_cell_19.png" alt="City-wide population and internationalisation trend" />
+      <img src="../notebooks/images/fig_01_city_trend.png" alt="City-wide population trend from 1995 to 2025" />
+      <p class="note" style="margin-top:12px;">Total Copenhagen population over time. The steady increase tells us the city is growing, not shrinking.</p>
     </div>
-    <p class="note">Source asset: <code>assets/notebook_cell_19.png</code>, exported from notebook cell 19.</p>
   </section>
 
   <section>
     <h2>2. Growth was uneven across neighbourhoods</h2>
     <p>City-wide growth hides local differences. Some districts expanded much faster than others, which matters because demographic change does not happen on a flat map: it is experienced in neighbourhoods.</p>
     <div class="chart-card">
-      <!-- Plotly figure exported directly from notebook cell 63 -->
-      <div id="plot-63" class="plot"></div>
+      <img src="../notebooks/images/fig_02_district_trends.png" alt="District-level population trends" />
+      <p class="note" style="margin-top:12px;">Each line represents one district. Some lines climb steeply (rapid growth), others stay flat (stable). This reveals neighbourhood-level differences hidden by the city average.</p>
     </div>
-    <p class="note">Tip: click district names in the legend to isolate individual lines.</p>
   </section>
 
   <section>
     <h2>3. The central story: internationalisation also diverged</h2>
     <p>The most important measure is not only how many people live in each district, but what share of residents have immigrant or descendant backgrounds. Using shares makes districts comparable even when their total population sizes differ.</p>
     <div class="chart-card">
-      <!-- Plotly figure exported directly from notebook cell 65 -->
-      <div id="plot-65" class="plot"></div>
+      <img src="../notebooks/images/fig_03_delta_bar.png" alt="International share divergence by district" />
+      <p class="note" style="margin-top:12px;">The change in international share from 1995 to 2025 for each district. Long bars = rapid internationalisation. Short bars = slower change. The pattern is not uniform.</p>
     </div>
-    <div class="callout">The pattern is not simply “Copenhagen became more international”. The stronger story is that some districts became international much faster than others.</div>
+    <div class="callout">The pattern is not simply "Copenhagen became more international". The stronger story is that some districts became international much faster than others.</div>
   </section>
 
   <section>
     <h2>4. A compact view: district by year</h2>
-    <p>The heatmap compresses the same long-term trend into one view. Darker cells indicate higher international share. This makes it easier to see when changes accelerated and which districts stand apart.</p>
+    <p>The heatmap compresses the long-term trend into one view. Darker cells indicate higher international share. This makes it easier to see when changes accelerated and which districts stand apart.</p>
     <div class="chart-card">
-      <!-- Plotly figure exported directly from notebook cell 69 -->
-      <div id="plot-69" class="plot"></div>
+      <img src="../notebooks/images/fig_04_heatmap.png" alt="Heatmap of international share by district and year" />
+      <p class="note" style="margin-top:12px;">Each row = a district, each column = a year. Darker = more international. Look for rows that get much darker over time, or rows that are already dark in 1995.</p>
     </div>
   </section>
 
   <section>
     <h2>5. Who are the communities behind the change?</h2>
-    <p>District trends show where internationalisation happened. Country-of-origin data gives the story names. The ranking below shows which origin communities grew most in absolute numbers over the period.</p>
-    <div class="chart-card">
-      <!-- Plotly figure exported directly from notebook cell 67 -->
-      <div id="plot-67" class="plot"></div>
-    </div>
+    <p>District trends show where internationalisation happened. Country-of-origin data gives the story names. The charts below show which origin communities grew most in absolute numbers over the period.</p>
     <div class="grid">
       <div class="chart-card">
-        <!-- PNG exported directly from notebook cell 44 -->
-        <img src="assets/notebook_cell_44.png" alt="Top 10 foreign origin countries over time" />
+        <img src="../notebooks/images/fig_10_top10_countries.png" alt="Top 10 foreign origin countries over time" />
+        <p class="note" style="margin-top:12px;">Ranking of the top 10 origin countries. Each line shows how one country's population grew over 30 years.</p>
       </div>
       <div class="chart-card">
-        <!-- PNG exported directly from notebook cell 48 -->
-        <img src="assets/notebook_cell_48.png" alt="Stacked area chart of origin communities" />
+        <img src="../notebooks/images/fig_12_stacked_area.png" alt="Stacked area chart of origin communities" />
+        <p class="note" style="margin-top:12px;">The composition of all foreign-origin residents. Each color is a different region or country. The total area height = total international population.</p>
       </div>
     </div>
   </section>
@@ -102,12 +97,10 @@
     <h2>6. Geography: the pattern has a shape</h2>
     <p>Maps place the district-level changes back onto Copenhagen. The first map shows where international share is highest in 2025. The second map shows which districts grew most in absolute population size from 1995 to 2025.</p>
     <div class="chart-card">
-      <!-- Folium map exported directly from notebook cell 71 -->
-      <iframe src="assets/folium_cell_71.html" title="International share hotspot map"></iframe>
+      <iframe src="../notebooks/maps/copenhagen_international_share_heatmap_2025.html" title="International share hotspot map"></iframe>
     </div>
     <div class="chart-card">
-      <!-- Folium map exported directly from notebook cell 73 -->
-      <iframe src="assets/folium_cell_73.html" title="Population change map"></iframe>
+      <iframe src="../notebooks/maps/copenhagen_population_change_1995_2025.html" title="Population change map"></iframe>
     </div>
   </section>
 
@@ -116,12 +109,12 @@
     <p>The notebook also groups districts with similar internationalisation trajectories using clustering. This keeps the technical work behind the scenes, while the website presents the result in plain language: some districts follow low, medium, or high internationalisation paths.</p>
     <div class="grid">
       <div class="chart-card">
-        <!-- PNG exported directly from notebook cell 36 -->
-        <img src="assets/notebook_cell_36.png" alt="PCA cluster plot of Copenhagen districts" />
+        <img src="../notebooks/images/fig_07_pca_clusters.png" alt="PCA cluster plot of Copenhagen districts" />
+        <p class="note" style="margin-top:12px;">Districts plotted in a simplified space. Colors represent cluster groups. Districts that look close together have similar patterns.</p>
       </div>
       <div class="chart-card">
-        <!-- PNG exported directly from notebook cell 38 -->
-        <img src="assets/notebook_cell_38.png" alt="Cluster trajectories over time" />
+        <img src="../notebooks/images/fig_08_cluster_trajectories.png" alt="Cluster trajectories over time" />
+        <p class="note" style="margin-top:12px;">How each cluster group evolved from 1995 to 2025. Different colored lines = different neighbourhood types, each with its own path.</p>
       </div>
     </div>
     <p>Instead of presenting model details first, the website uses the model as a way to simplify the story for a non-technical reader.</p>
@@ -129,49 +122,29 @@
 
   <section>
     <h2>8. Looking forward, carefully</h2>
-    <p>The notebook includes simple trend forecasts. These should be read as “what happens if the past trend continues”, not as firm predictions. They are useful because they make the direction of change visible and invite discussion about what might slow, accelerate, or reshape the pattern.</p>
+    <p>The notebook includes simple trend forecasts. These should be read as "what happens if the past trend continues", not as firm predictions. They are useful because they make the direction of change visible and invite discussion about what might slow, accelerate, or reshape the pattern.</p>
     <div class="grid">
       <div class="chart-card">
-        <!-- PNG exported directly from notebook cell 56 -->
-        <img src="assets/notebook_cell_56.png" alt="Forecasts by district" />
+        <img src="../notebooks/images/fig_14_forecasts.png" alt="Forecasts by district" />
+        <p class="note" style="margin-top:12px;">Projected international share for each district through 2035. Assumes the past 30-year trend continues.</p>
       </div>
       <div class="chart-card">
-        <!-- PNG exported directly from notebook cell 58 -->
-        <img src="assets/notebook_cell_58.png" alt="2035 forecast by district" />
+        <img src="../notebooks/images/fig_15_forecast_bar.png" alt="2035 forecast by district" />
+        <p class="note" style="margin-top:12px;">Comparison of today vs. 2035 projection for each district. Shows which neighbourhoods will likely change the most.</p>
       </div>
     </div>
   </section>
 
   <section>
     <h2>Conclusion</h2>
-    <p>Copenhagen’s population story is not only about more people. It is about a changing urban composition that developed unevenly across space. The clearest takeaway is that internationalisation is both a city-wide trend and a neighbourhood-level pattern: to understand it, we need timelines, district comparisons, origin data, maps, and a little modelling behind the scenes.</p>
+    <p>Copenhagen's population story is not only about more people. It is about a changing urban composition that developed unevenly across space. The clearest takeaway is that internationalisation is both a city-wide trend and a neighbourhood-level pattern: to understand it, we need timelines, district comparisons, origin data, maps, and a little modelling behind the scenes.</p>
   </section>
 
   <footer>
-    <p>All visual assets in this website are exported from <code>copenhagen_full_analysis.ipynb</code>. The HTML does not manually recreate the charts; it loads notebook-generated PNGs, Plotly JSON figures, and Folium HTML maps from the <code>assets/</code> folder.</p>
+    <p>All visual assets in this website are exported from <code>copenhagen_full_analysis.ipynb</code> and stored in the <code>notebooks/images/</code> and <code>notebooks/maps/</code> folders. The HTML does not manually recreate the charts; it loads notebook-generated PNGs and Folium HTML maps directly.</p>
   </footer>
 </main>
 <script>
-const figures = {
-  'plot-63': 'assets/plotly_cell_63.json',
-  'plot-65': 'assets/plotly_cell_65.json',
-  'plot-67': 'assets/plotly_cell_67.json',
-  'plot-69': 'assets/plotly_cell_69.json'
-};
-
-async function loadPlot(divId, path) {
-  const response = await fetch(path);
-  const fig = await response.json();
-  const config = { responsive: true, displaylogo: false };
-  Plotly.newPlot(divId, fig.data, fig.layout, config);
-}
-
-for (const [divId, path] of Object.entries(figures)) {
-  loadPlot(divId, path).catch(error => {
-    document.getElementById(divId).innerHTML = '<p class="note">Could not load figure from ' + path + '</p>';
-    console.error(error);
-  });
-}
 </script>
 </body>
 </html>

@@ -1,12 +1,4 @@
-# This script is adapted from Sune Lehmann's (suneman) repository "socialdata2026"
-
-#!/bin/bash
-#
-# Convert project notebooks to HTML for GitHub Pages.
-# Run this whenever you want to update the published HTML.
-#
-# Usage:  ./build_html.sh
-#
+it is because this file built_html.sh
 
 # This script is adapted from Sune Lehmann's (suneman) repository "socialdata2026"
 
@@ -67,11 +59,5 @@ cat >> "$SITE_DIR/index.html" << 'HTMLEOF'
 </html>
 HTMLEOF
 
-# Convert notebooks to HTML
-echo "Converting notebooks..."
-jupyter nbconvert --to html "$NB_DIR"/*.ipynb --output-dir "$SITE_DIR/reports/"
-echo "Done."
-
 echo "Built HTML in site/. Commit and push to publish."
-
 

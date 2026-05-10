@@ -179,8 +179,30 @@ jupyter nbconvert --to html notebooks/*.ipynb --output-dir docs/reports
 
 # References
 
-- Statistics Denmark
-- Copenhagen Municipality
-- Segel, E., & Heer, J. (2010). *Narrative Visualization: Telling Stories with Data.*
-- OECD (2018). *Divided Cities: Understanding Intra-urban Inequalities.*
-- Musterd et al. (2017). *Socioeconomic segregation in European capital cities.*
+- Statistics Denmark StatBank. Population, ancestry, and income datasets used throughout the analysis.  
+  https://www.statbank.dk/statbank5a/default.asp?w=1536
+
+- Musterd, S., Marcińczak, S., van Ham, M., & Tammaru, T. (2017).  
+  *Socioeconomic segregation in European capital cities: Increasing separation between poor and rich.*  
+  Urban Geography.  
+  https://www.tandfonline.com/doi/full/10.1080/02723638.2016.1228371
+
+- OECD. (2018).  
+  *Divided Cities: Understanding Intra-urban Inequalities.*  
+  OECD Publishing.  
+  https://www.oecd.org/publications/divided-cities-9789264300385-en.htm
+
+- Florida, R. (2017).  
+  *The New Urban Crisis: How Our Cities Are Increasing Inequality, Deepening Segregation, and Failing the Middle Class—and What We Can Do About It.*  
+  Basic Books.  
+  https://www.researchgate.net/publication/327796430_Richard_Florida_The_new_urban_crisis_how_our_cities_are_increasing_inequality_deepening_segregation_and_failing_the_middle_class-and_what_we_can_do_about_it_Basic_Books_2017_USD_2000_352pp_ISBN_978-0-
+
+- Massey, D. S. (1996).  
+  *The age of extremes: Concentrated affluence and poverty in the twenty-first century.*  
+  Demography, 33(4), 395–412.  
+  https://www.jstor.org/stable/2061773
+
+- Segel, E., & Heer, J. (2010).  
+  *Narrative Visualization: Telling Stories with Data.*  
+  IEEE Transactions on Visualization and Computer Graphics.  
+  https://ieeexplore.ieee.org/document/5613452

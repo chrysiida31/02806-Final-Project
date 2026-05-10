@@ -1,4 +1,4 @@
-# 02806 Final Project — Copenhagen’s Changing Population
+# 02806 Final Project - Copenhagen’s Changing Population
 
 This repository contains our final project submission for **02806 Social Data Analysis and Visualization** at DTU.
 
@@ -187,13 +187,13 @@ jupyter nbconvert --to html notebooks/*.ipynb --output-dir docs/reports
   Urban Geography.  
   https://www.tandfonline.com/doi/full/10.1080/02723638.2016.1228371
 
-- OECD. (2018).  
+- OECD. (2018).
   *Divided Cities: Understanding Intra-urban Inequalities.*  
   OECD Publishing.  
   https://www.oecd.org/publications/divided-cities-9789264300385-en.htm
 
 - Florida, R. (2017).  
-  *The New Urban Crisis: How Our Cities Are Increasing Inequality, Deepening Segregation, and Failing the Middle Class—and What We Can Do About It.*  
+  *The New Urban Crisis: How Our Cities Are Increasing Inequality, Deepening Segregation, and Failing the Middle Class-and What We Can Do About It.*  
   Basic Books.  
   https://www.researchgate.net/publication/327796430_Richard_Florida_The_new_urban_crisis_how_our_cities_are_increasing_inequality_deepening_segregation_and_failing_the_middle_class-and_what_we_can_do_about_it_Basic_Books_2017_USD_2000_352pp_ISBN_978-0-
 

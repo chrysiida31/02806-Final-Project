@@ -10,14 +10,14 @@
 set -e
 
 REPO_ROOT="$(cd "$(dirname "$0")" && pwd)"
-SITE_DIR="$REPO_ROOT/site"
+DOCS_DIR="$REPO_ROOT/docs"
 NB_DIR="$REPO_ROOT/notebooks"
 
 # Clean and recreate output directory
-rm -rf "$SITE_DIR/reports"
-mkdir -p "$SITE_DIR/reports"
+rm -rf "$DOCS_DIR/reports"
+mkdir -p "$DOCS_DIR/reports"
 
 # Convert notebooks to HTML
 echo "Converting notebooks..."
-jupyter nbconvert --to html "$NB_DIR"/*.ipynb --output-dir "$SITE_DIR/reports/"
-echo "Done. Built notebook HTML files in site/reports/."
+jupyter nbconvert --to html "$NB_DIR"/*.ipynb --output-dir "$DOCS_DIR/reports/"
+echo "Done. Built notebook HTML files in docs/reports/."

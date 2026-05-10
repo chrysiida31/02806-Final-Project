@@ -4,147 +4,874 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Copenhagen's Changing Population</title>
+
   <style>
-    :root { --text:#1f2933; --muted:#667085; --line:#e5e7eb; --bg:#ffffff; --soft:#f7f8fa; --accent:#2563eb; }
+    :root {
+      --text:#1f2933;
+      --muted:#667085;
+      --line:#e5e7eb;
+      --bg:#ffffff;
+      --soft:#f7f8fa;
+      --accent:#2563eb;
+      --dark:#172554;
+    }
+
     * { box-sizing: border-box; }
-    body { margin:0; font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color:var(--text); background:var(--bg); line-height:1.6; }
-    header { padding:72px 20px 48px; border-bottom:1px solid var(--line); background:var(--soft); }
-    main { max-width:1040px; margin:0 auto; padding:0 20px 64px; }
-    .hero { max-width:1040px; margin:0 auto; }
-    .eyebrow { color:var(--accent); font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-size:.78rem; }
-    h1 { font-size:clamp(2.2rem, 5vw, 4.5rem); line-height:1.05; margin:.5rem 0 1rem; font-weight:800; }
-    h2 { font-size:clamp(1.7rem, 3vw, 2.4rem); margin:3.5rem 0 1rem; line-height:1.15; }
-    h3 { font-size:1.15rem; margin:1.6rem 0 .6rem; }
-    p { max-width:760px; color:#374151; }
-    .lead { font-size:1.2rem; color:#475467; max-width:820px; }
-    .note { color:var(--muted); font-size:.95rem; }
-    .chart-card { border:1px solid var(--line); border-radius:14px; padding:24px; margin:28px 0 16px; background:white; }
-    img { width:100%; height:auto; border-radius:10px; display:block; min-height:300px; object-fit:contain; }
-    iframe { width:100%; height:620px; border:1px solid var(--line); border-radius:10px; background:white; }
-    .grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
-    .callout { border-left:4px solid var(--accent); padding:12px 0 12px 18px; margin:28px 0; color:#344054; background:#fafafa; }
-    footer { border-top:1px solid var(--line); margin-top:56px; padding-top:24px; color:var(--muted); font-size:.95rem; }
-    code { background:#f2f4f7; padding:2px 5px; border-radius:5px; }
-    ul { color:#374151; max-width:760px; }
-    li { margin:0.5rem 0; }
-    @media (max-width:1200px) { .grid { grid-template-columns:1fr; } }
-    @media (max-width:800px) { .grid { grid-template-columns:1fr; } iframe { height:520px; } }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 70px 20px 48px;
+      border-bottom: 1px solid var(--line);
+      background: var(--soft);
+    }
+
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 20px 64px;
+    }
+
+    .hero {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: .78rem;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      line-height: 1.05;
+      margin: .5rem 0 1rem;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    h2 {
+      font-size: clamp(1.55rem, 3vw, 2.1rem);
+      margin: 3.2rem 0 1rem;
+      line-height: 1.15;
+      color: var(--dark);
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 8px;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      margin: 1.8rem 0 .5rem;
+      color: #1e3a8a;
+    }
+
+    p {
+      max-width: 760px;
+      color: #374151;
+      font-size: 1.02rem;
+    }
+
+    .lead {
+      font-size: 1.18rem;
+      color: #475467;
+      max-width: 840px;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .toc {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      padding: 22px 26px;
+      margin: 34px 0 44px;
+    }
+
+    .toc h2 {
+      margin: 0 0 12px;
+      font-size: 1.35rem;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .toc ol {
+      margin: 0;
+      padding-left: 22px;
+      color: #374151;
+    }
+
+    .toc li {
+      margin: 6px 0;
+    }
+
+    .chart-card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 20px;
+      margin: 26px auto;
+      background: white;
+      max-width: 820px;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    }
+
+    .chart-card.wide {
+      max-width: 900px;
+    }
+
+    img {
+      width: 100%;
+      height: 430px;
+      border-radius: 10px;
+      display: block;
+      object-fit: contain;
+    }
+
+    iframe {
+      width: 100%;
+      height: 520px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: white;
+    }
+
+    .map-frame {
+      height: 560px;
+    }
+
+    .caption {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: .92rem;
+      max-width: 780px;
+      font-weight: 600;
+    }
+
+    .callout {
+      border-left: 4px solid var(--accent);
+      padding: 14px 0 14px 18px;
+      margin: 28px 0;
+      color: #344054;
+      background: #fafafa;
+      max-width: 780px;
+      font-weight: 600;
+    }
+
+    .references ol {
+      max-width: 820px;
+      color: #374151;
+    }
+
+    .references li {
+      margin: 10px 0;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      margin-top: 56px;
+      padding-top: 24px;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    code {
+      background: #f2f4f7;
+      padding: 2px 5px;
+      border-radius: 5px;
+    }
+
+    @media (max-width: 900px) {
+      iframe,
+      .map-frame {
+        height: 460px;
+      }
+
+      img {
+        height: 360px;
+      }
+
+      .chart-card,
+      .chart-card.wide {
+        max-width: 100%;
+      }
+    }
   </style>
 </head>
+
 <body>
+
 <header>
   <div class="hero">
-    <div class="eyebrow">Data story from the explainer notebook</div>
+    <div class="eyebrow">02806 Social Data Analysis and Visualization</div>
     <h1>Copenhagen did not just grow. It changed shape.</h1>
-    <p class="lead">From 1995 to 2025, Copenhagen became larger and more international. This website follows that change across time, neighbourhoods, and origin communities, using visualizations extracted directly from the project notebook.</p>
-    <p class="note"><a href="https://github.com/chrysiida31/02806-Final-Project/blob/main/notebooks/copenhagen_full_analysis.ipynb" style="color:var(--accent); text-decoration:none; font-weight:600;">View the explainer notebook on GitHub</a> to see the data analysis, methodology, code, and additional context.</p>
+    <p class="lead">
+      From 1995 to 2025, Copenhagen became larger and more international.
+      This data story follows that transformation through city growth, district differences,
+      origin communities, income patterns, maps, clustering, and future projections.
+    </p>
+    <p class="note">
+      <a href="https://github.com/chrysiida31/02806-Final-Project/blob/main/notebooks/copenhagen_full_analysis.ipynb">
+        View the explainer notebook on GitHub
+      </a>
+      for the technical analysis, data cleaning, code, and methodology.
+    </p>
   </div>
 </header>
+
 <main>
-  <section>
-    <h2>1. Start with the baseline: the city grew</h2>
-    <p>Before looking at internationalisation, we need the simplest reference point: Copenhagen's total population. The first chart shows the city-wide trend over three decades—a clear upward trajectory from 1995 to 2025.</p>
+
+  <section class="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+      <li><a href="#intro">Introduction</a></li>
+      <li><a href="#city-growth">City growth</a></li>
+      <li><a href="#district-growth">District differences</a></li>
+      <li><a href="#internationalisation">Internationalisation</a></li>
+      <li><a href="#maps">Geography and maps</a></li>
+      <li><a href="#origins">Countries of origin</a></li>
+      <li><a href="#income">Income context</a></li>
+      <li><a href="#clusters">Neighbourhood types</a></li>
+      <li><a href="#forecast">Forecasts</a></li>
+      <li><a href="#conclusion">Conclusion</a></li>
+      <li><a href="#references">References</a></li>
+    </ol>
+  </section>
+
+  <section id="intro">
+    <h2>Introduction</h2>
+
+    <p>
+      Copenhagen’s population story is not only about the city getting bigger.
+      It is also about how the composition of the city changed, and how this change
+      developed differently across neighbourhoods.
+    </p>
+
+    <p>
+      Large cities across Europe have experienced major demographic changes during the
+      last decades due to migration, urbanisation, and economic restructuring.
+      Copenhagen is no exception. However, demographic transformation does not occur
+      evenly across urban space. Some neighbourhoods change rapidly, while others
+      remain comparatively stable.
+    </p>
+
+    <p>
+      Previous research on European cities has shown that migration, socioeconomic
+      inequality, and neighbourhood change are often spatially connected, producing
+      distinct urban patterns over time (Musterd et al., 2017; OECD, 2018).
+    </p>
+
+    <p>
+      The main question of this project is:
+      <strong>How has Copenhagen’s population become more international, and where has this change been strongest?</strong>
+    </p>
+
+    <p>
+      The website is written for a non-technical reader. The technical details,
+      including preprocessing, modelling, and data choices, are explained in the notebook.
+    </p>
+  </section>
+
+  <section id="city-growth">
+    <h2>1. Copenhagen has grown steadily since 1995</h2>
+
+    <p>
+      The first step is to understand the baseline. Copenhagen’s total population has
+      increased steadily over the last three decades, especially after the late 2000s.
+      This means the demographic transformation happened in a growing city.
+    </p>
+
     <div class="chart-card">
-      <img src="../notebooks/images/fig_01_city_trend.png" alt="City-wide population trend from 1995 to 2025" />
-      <p class="note" style="margin-top:12px;">Total Copenhagen population over time. The steady increase tells us the city is growing, not shrinking.</p>
+      <img src="../notebooks/images/fig_01_city_trend.png" alt="Copenhagen total population trend from 1995 to 2025" />
+      <p class="caption">
+        Figure 1. Copenhagen’s total population increased steadily between 1995 and 2025.
+      </p>
+    </div>
+
+    <p>
+      The increase is not perfectly linear. Growth accelerated especially after
+      the financial crisis period and continued strongly through the 2010s.
+      This reflects Copenhagen’s broader urban expansion and increasing attractiveness
+      as both a residential and economic centre.
+    </p>
+
+    <p>
+      Importantly, this plot alone does not tell us anything about demographic
+      composition. A larger population does not necessarily mean a more international city.
+      To understand that, we need to move from total population to district-level composition.
+    </p>
+
+    <div class="chart-card">
+      <iframe src="../notebooks/images/fig_17_population_development_line_chart.html" title="Interactive Copenhagen population trend"></iframe>
+      <p class="caption">
+        Figure 2. Interactive population trend. Hovering makes the yearly values easier to inspect.
+      </p>
     </div>
   </section>
 
-  <section>
-    <h2>2. Growth was uneven across neighbourhoods</h2>
-    <p>City-wide growth hides local differences. Some districts expanded much faster than others, which matters because demographic change does not happen on a flat map: it is experienced in neighbourhoods.</p>
+  <section id="district-growth">
+    <h2>2. Growth was uneven across districts</h2>
+
+    <p>
+      City-wide growth hides important local differences. Some districts expanded much
+      faster than others. This matters because demographic change is experienced locally:
+      in housing areas, schools, workplaces, and neighbourhood communities.
+    </p>
+
+    <p>
+      Urban researchers often describe this as uneven urban development:
+      growth concentrates in some parts of the city more than others.
+      Infrastructure investment, housing construction, accessibility,
+      and labour-market opportunities all influence where population growth occurs.
+    </p>
+
     <div class="chart-card">
-      <img src="../notebooks/images/fig_02_district_trends.png" alt="District-level population trends" />
-      <p class="note" style="margin-top:12px;">Each line represents one district. Some lines climb steeply (rapid growth), others stay flat (stable). This reveals neighbourhood-level differences hidden by the city average.</p>
+      <img src="../notebooks/images/fig_02_district_trends.png" alt="Population development across Copenhagen districts" />
+      <p class="caption">
+        Figure 3. District-level population trends show that Copenhagen’s growth was not spatially uniform.
+      </p>
     </div>
+
+    <p>
+      The district trajectories reveal that Copenhagen’s growth was highly uneven.
+      Amager Vest and Vesterbro/Kongens Enghave experienced especially strong
+      population increases, while districts such as Vanløse changed much more slowly.
+    </p>
+
+    <p>
+      These differences matter because demographic change happens locally.
+      Residents experience population change through neighbourhood density,
+      housing development, schools, and public spaces.
+    </p>
+
+    <p>
+      This also suggests that internationalisation may not develop uniformly across the city.
+      Some districts may absorb much larger demographic shifts than others.
+    </p>
   </section>
 
-  <section>
-    <h2>3. The central story: internationalisation also diverged</h2>
-    <p>The most important measure is not only how many people live in each district, but what share of residents have immigrant or descendant backgrounds. Using shares makes districts comparable even when their total population sizes differ.</p>
-    <div class="chart-card">
-      <img src="../notebooks/images/fig_03_delta_bar.png" alt="International share divergence by district" />
-      <p class="note" style="margin-top:12px;">The change in international share from 1995 to 2025 for each district. Long bars = rapid internationalisation. Short bars = slower change. The pattern is not uniform.</p>
-    </div>
-    <div class="callout">The pattern is not simply "Copenhagen became more international". The stronger story is that some districts became international much faster than others.</div>
-  </section>
+  <section id="internationalisation">
+    <h2>3. The main story: Copenhagen became more international</h2>
 
-  <section>
-    <h2>4. A compact view: district by year</h2>
-    <p>The heatmap compresses the long-term trend into one view. Darker cells indicate higher international share. This makes it easier to see when changes accelerated and which districts stand apart.</p>
+    <p>
+      The key measure in this project is the share of residents with immigrant or
+      descendant background. Shares make districts comparable, even when they differ in size.
+    </p>
+
+    <p>
+      Similar patterns have been observed in many European cities,
+      where immigrant settlement tends to cluster spatially due to housing availability,
+      social networks, and economic conditions. However, clustering does not imply isolation.
+      Many districts can simultaneously become more socioeconomically mixed and more international.
+    </p>
+
+    <div class="chart-card">
+      <img src="../notebooks/images/fig_18_international_share_line_chart.png" alt="International share by district over time" />
+      <p class="caption">
+        Figure 4. Most districts became more international over time, but they followed different paths.
+      </p>
+    </div>
+
+    <p>
+      All districts show upward movement, meaning internationalisation increased
+      across the entire city. However, the trajectories differ substantially.
+    </p>
+
+    <p>
+      Nørrebro already started at a relatively high international share in the 1990s,
+      while districts such as Brønshøj-Husum and Amager Vest experienced much stronger
+      long-term increases later on.
+    </p>
+
+    <p>
+      This shows that Copenhagen’s demographic transformation was not one single process,
+      but several neighbourhood-level trajectories unfolding at different speeds.
+    </p>
+
+    <div class="chart-card">
+      <img src="../notebooks/images/fig_03_delta_bar.png" alt="Change in international share from 1995 to 2025 by district" />
+      <p class="caption">
+        Figure 5. Brønshøj-Husum, Amager Vest, and Bispebjerg had some of the largest increases in international share.
+      </p>
+    </div>
+
+    <p>
+      The bar chart makes the unequal pace of change clearer.
+      Brønshøj-Husum experienced the largest percentage-point increase between
+      1995 and 2025, while districts such as Nørrebro changed less because they
+      were already relatively international at the beginning of the period.
+    </p>
+
+    <p>
+      In other words, districts with smaller increases are not necessarily “less international.”
+      Some simply started from a higher baseline.
+    </p>
+
+    <div class="callout">
+      The strongest finding is not simply that Copenhagen became more international.
+      It is that internationalisation happened unevenly across neighbourhoods.
+    </div>
+
+    <h3>A compact district-by-year view</h3>
+
+    <p>
+      The heatmap compresses the long-term pattern into one image. Darker cells indicate
+      a higher international share. This makes it easier to see both long-term growth and
+      differences between districts.
+    </p>
+
     <div class="chart-card">
       <img src="../notebooks/images/fig_04_heatmap.png" alt="Heatmap of international share by district and year" />
-      <p class="note" style="margin-top:12px;">Each row = a district, each column = a year. Darker = more international. Look for rows that get much darker over time, or rows that are already dark in 1995.</p>
+      <p class="caption">
+        Figure 6. International share by district every five years.
+      </p>
+    </div>
+
+    <p>
+      Reading horizontally shows how each district evolved through time,
+      while reading vertically compares districts within the same year.
+      The gradual darkening across many rows highlights that internationalisation
+      was a persistent long-term trend rather than a sudden short-term shift.
+    </p>
+
+    <div class="chart-card">
+      <iframe src="../notebooks/images/fig_20_international_share_heatmap.html" title="Interactive international share heatmap"></iframe>
+      <p class="caption">
+        Figure 7. Interactive heatmap. Readers can hover to compare exact values across districts and years.
+      </p>
     </div>
   </section>
 
-  <section>
+  <section id="maps">
+    <h2>4. Geography: the pattern has a shape</h2>
+
+    <p>
+      Maps place the district-level trends back onto Copenhagen. They show that
+      demographic change is not just a timeline; it also has a spatial pattern.
+    </p>
+
+    <p>
+      Spatial visualisation is important because demographic inequality is inherently geographic.
+      Maps reveal patterns that are difficult to identify from tables or line charts alone.
+    </p>
+
+    <div class="chart-card wide">
+      <iframe class="map-frame" src="../notebooks/maps/copenhagen_international_share_heatmap_2025.html" title="International share map 2025"></iframe>
+      <p class="caption">
+        Figure 8. International share by district in 2025. The map shows where internationalisation is most concentrated.
+      </p>
+    </div>
+
+    <p>
+      The spatial pattern reveals that internationalisation is geographically clustered.
+      Some districts contain substantially higher shares of residents with immigrant
+      or descendant backgrounds than others.
+    </p>
+
+    <p>
+      The concentration of internationalisation in certain districts also reflects
+      broader urban processes such as housing affordability, accessibility,
+      and neighbourhood-level social networks.
+    </p>
+
+    <div class="chart-card wide">
+      <iframe class="map-frame" src="../notebooks/maps/copenhagen_population_change_1995_2025.html" title="Population change map 1995 to 2025"></iframe>
+      <p class="caption">
+        Figure 9. Population change from 1995 to 2025. This shows where the city grew most.
+      </p>
+    </div>
+
+    <div class="chart-card wide">
+      <iframe class="map-frame" src="../notebooks/images/fig_21_animated_international_share_map.html" title="Animated international share map"></iframe>
+      <p class="caption">
+        Figure 10. Animated map showing how internationalisation developed across Copenhagen over time.
+      </p>
+    </div>
+
+    <p>
+      The animation shows that demographic change spreads gradually over time.
+      Instead of one sudden transformation, the pattern develops progressively across districts.
+    </p>
+  </section>
+
+  <section id="origins">
     <h2>5. Who are the communities behind the change?</h2>
-    <p>District trends show where internationalisation happened. Country-of-origin data gives the story names. The charts below show which origin communities grew most in absolute numbers over the period.</p>
-    <div class="grid">
-      <div class="chart-card">
-        <img src="../notebooks/images/fig_10_top10_countries.png" alt="Top 10 foreign origin countries over time" />
-        <p class="note" style="margin-top:12px;">Ranking of the top 10 origin countries. Each line shows how one country's population grew over 30 years.</p>
-      </div>
-      <div class="chart-card">
-        <img src="../notebooks/images/fig_12_stacked_area.png" alt="Stacked area chart of origin communities" />
-        <p class="note" style="margin-top:12px;">The composition of all foreign-origin residents. Each color is a different region or country. The total area height = total international population.</p>
-      </div>
+
+    <p>
+      District trends show where internationalisation happened. Country-of-origin data
+      shows who is behind the change. The story is diverse: no single origin group explains
+      Copenhagen’s transformation.
+    </p>
+
+    <p>
+      The diversification of origin groups after 2000 reflects broader European migration trends,
+      including labour migration within the EU and refugee migration from conflict regions.
+      Copenhagen’s demographic transformation is therefore connected not only
+      to local urban change, but also to global political and economic developments.
+    </p>
+
+    <div class="chart-card">
+      <img src="../notebooks/images/fig_10_top10_countries.png" alt="Top 10 foreign nationalities in Copenhagen over time" />
+      <p class="caption">
+        Figure 11. Top foreign-origin populations over time.
+      </p>
+    </div>
+
+    <p>
+      Turkey remains the largest named origin group throughout the period,
+      but several newer migration patterns emerge clearly after 2010.
+    </p>
+
+    <p>
+      Poland and Syria show particularly strong increases, reflecting broader
+      European labour mobility and refugee migration during the 2010s.
+    </p>
+
+    <p>
+      This demonstrates that Copenhagen’s internationalisation is shaped by
+      multiple migration histories rather than one dominant origin group.
+    </p>
+
+    <div class="chart-card">
+      <img src="../notebooks/images/fig_11_pie_composition.png" alt="Foreign-origin population composition in Copenhagen 2024" />
+      <p class="caption">
+        Figure 12. The large “Other” category shows that Copenhagen’s foreign-origin population is highly diverse.
+      </p>
+    </div>
+
+    <p>
+      The large “Other” category is important. It shows that Copenhagen’s
+      foreign-origin population is highly diverse and cannot be reduced to
+      only a few major nationalities.
+    </p>
+
+    <div class="chart-card">
+      <img src="../notebooks/images/fig_12_stacked_area.png" alt="Stacked area chart of foreign-origin population by nationality" />
+      <p class="caption">
+        Figure 13. The stacked area chart shows the combined growth of several origin groups.
+      </p>
+    </div>
+
+    <p>
+      Unlike the line chart, the stacked area chart emphasizes composition.
+      The increasing total height shows the growth of the overall foreign-origin population,
+      while the changing coloured layers show shifts in the relative importance
+      of different communities.
+    </p>
+
+    <div class="chart-card">
+      <img src="../notebooks/images/fig_13_gen_shift.png" alt="Immigrants vs descendants in Copenhagen" />
+      <p class="caption">
+        Figure 14. Immigrants remain the larger group, but descendants have grown steadily.
+        This makes internationalisation increasingly local and generational.
+      </p>
+    </div>
+
+    <p>
+      The descendants category grows steadily throughout the period.
+      This suggests that internationalisation is increasingly becoming a
+      generational and locally rooted phenomenon rather than only a story of immigration flows.
+    </p>
+
+    <div class="chart-card">
+      <iframe src="../notebooks/images/fig_19_population_growth_bar_chart.html" title="Interactive population growth by origin country"></iframe>
+      <p class="caption">
+        Figure 15. Interactive ranking of origin countries by population growth.
+      </p>
     </div>
   </section>
 
-  <section>
-    <h2>6. Geography: the pattern has a shape</h2>
-    <p>Maps place the district-level changes back onto Copenhagen. The first map shows where international share is highest in 2025. The second map shows which districts grew most in absolute population size from 1995 to 2025.</p>
+  <section id="income">
+    <h2>6. Income adds socioeconomic context</h2>
+
+    <p>
+      Demographic change should not be separated from socioeconomic conditions.
+      Average income increased for all ancestry groups, but differences between groups
+      remain visible.
+    </p>
+
+    <p>
+      The relationship between demographic change and income is often politically sensitive.
+      However, the data suggests a more complex picture than simple narratives of decline.
+    </p>
+
     <div class="chart-card">
-      <iframe src="../notebooks/maps/copenhagen_international_share_heatmap_2025.html" title="International share hotspot map"></iframe>
+      <img src="../notebooks/images/fig_05_income_gap.png" alt="Average income by ancestry group in Copenhagen" />
+      <p class="caption">
+        Figure 16. Danish-origin and western immigrant groups have higher average incomes, while non-western immigrants and descendants remain lower.
+      </p>
     </div>
+
+    <p>
+      Income increased across all ancestry groups between 2008 and 2024.
+      However, substantial differences remain visible.
+    </p>
+
+    <p>
+      Danish-origin residents and western immigrant groups consistently show
+      higher average incomes, while non-western immigrants and descendants remain lower.
+    </p>
+
+    <p>
+      The important point is not simply inequality itself, but that demographic
+      transformation and socioeconomic conditions are interconnected.
+    </p>
+
     <div class="chart-card">
-      <iframe src="../notebooks/maps/copenhagen_population_change_1995_2025.html" title="Population change map"></iframe>
+      <img src="../notebooks/images/fig_09_income_by_cluster.png" alt="Mean district income by cluster" />
+      <p class="caption">
+        Figure 17. Income by cluster shows that internationalisation does not map simply onto lower income.
+      </p>
     </div>
+
+    <p>
+      Interestingly, the high-internationalisation cluster also shows strong
+      income growth. This challenges simplistic assumptions that increasing
+      internationalisation automatically corresponds to economic decline.
+    </p>
+
+    <p>
+      Some highly international districts also experienced strong economic growth,
+      suggesting that urban transformation can involve both increasing diversity
+      and increasing prosperity at the same time.
+    </p>
   </section>
 
-  <section>
+  <section id="clusters">
     <h2>7. Finding neighbourhood types</h2>
-    <p>The notebook also groups districts with similar internationalisation trajectories using clustering. This keeps the technical work behind the scenes, while the website presents the result in plain language: some districts follow low, medium, or high internationalisation paths.</p>
-    <div class="grid">
-      <div class="chart-card">
-        <img src="../notebooks/images/fig_07_pca_clusters.png" alt="PCA cluster plot of Copenhagen districts" />
-        <p class="note" style="margin-top:12px;">Districts plotted in a simplified space. Colors represent cluster groups. Districts that look close together have similar patterns.</p>
-      </div>
-      <div class="chart-card">
-        <img src="../notebooks/images/fig_08_cluster_trajectories.png" alt="Cluster trajectories over time" />
-        <p class="note" style="margin-top:12px;">How each cluster group evolved from 1995 to 2025. Different colored lines = different neighbourhood types, each with its own path.</p>
-      </div>
+
+    <p>
+      To simplify the many district-level patterns, the notebook groups districts with
+      similar internationalisation trajectories. This turns many lines into three readable
+      neighbourhood types: low, medium, and high internationalisation.
+    </p>
+
+    <p>
+      Clustering helps reduce complexity. Instead of interpreting ten separate district trajectories,
+      the method identifies broader neighbourhood types that share similar long-term patterns.
+      This approach is commonly used in exploratory urban analytics because it makes
+      high-dimensional demographic data easier to interpret visually.
+    </p>
+
+    <div class="chart-card">
+      <img src="../notebooks/images/fig_06_elbow.png" alt="Elbow plot for KMeans clustering" />
+      <p class="caption">
+        Figure 18. The elbow plot supports using three clusters.
+      </p>
     </div>
-    <p>Instead of presenting model details first, the website uses the model as a way to simplify the story for a non-technical reader.</p>
+
+    <p>
+      The elbow plot helps determine a reasonable number of district groups.
+      After three clusters, additional clusters provide diminishing improvements,
+      suggesting that three broad neighbourhood types capture most of the variation.
+    </p>
+
+    <div class="chart-card">
+      <img src="../notebooks/images/fig_07_pca_clusters.png" alt="PCA clustering of Copenhagen districts" />
+      <p class="caption">
+        Figure 19. PCA projection of district clusters.
+      </p>
+    </div>
+
+    <p>
+      Districts positioned close together in the PCA projection share similar
+      demographic trajectories. The separation between clusters indicates that
+      districts followed meaningfully different long-term patterns.
+    </p>
+
+    <div class="chart-card">
+      <img src="../notebooks/images/fig_08_cluster_trajectories.png" alt="Non-western share trajectory by cluster" />
+      <p class="caption">
+        Figure 20. Cluster trajectories show three different neighbourhood paths.
+      </p>
+    </div>
+
+    <p>
+      The three trajectories can be interpreted as low, medium, and high
+      internationalisation neighbourhood paths.
+    </p>
+
+    <p>
+      This simplifies many district-level trends into a more interpretable structure,
+      making it easier to communicate the overall pattern to non-technical readers.
+    </p>
+
+    <div class="chart-card">
+      <iframe src="../notebooks/images/fig_22_cluster_analysis_scatter_plot.html" title="Interactive cluster analysis scatter plot"></iframe>
+      <p class="caption">
+        Figure 21. Interactive cluster plot. Readers can inspect individual districts and compare cluster groups.
+      </p>
+    </div>
   </section>
 
-  <section>
+  <section id="forecast">
     <h2>8. Looking forward, carefully</h2>
-    <p>The notebook includes simple trend forecasts. These should be read as "what happens if the past trend continues", not as firm predictions. They are useful because they make the direction of change visible and invite discussion about what might slow, accelerate, or reshape the pattern.</p>
-    <div class="grid">
-      <div class="chart-card">
-        <img src="../notebooks/images/fig_14_forecasts.png" alt="Forecasts by district" />
-        <p class="note" style="margin-top:12px;">Projected international share for each district through 2035. Assumes the past 30-year trend continues.</p>
-      </div>
-      <div class="chart-card">
-        <img src="../notebooks/images/fig_15_forecast_bar.png" alt="2035 forecast by district" />
-        <p class="note" style="margin-top:12px;">Comparison of today vs. 2035 projection for each district. Shows which neighbourhoods will likely change the most.</p>
-      </div>
+
+    <p>
+      The forecasts are not firm predictions. They are simple “what if” scenarios:
+      what happens if the past trend continues? This makes the direction of change visible
+      and invites discussion about what could slow, accelerate, or reshape the pattern.
+    </p>
+
+    <p>
+      Forecasting demographic change is inherently uncertain because migration,
+      housing policy, economic cycles, and geopolitical events can rapidly alter trends.
+      The projections in this project should therefore be understood primarily as
+      exploratory scenarios rather than deterministic predictions.
+    </p>
+
+    <div class="chart-card">
+      <img src="../notebooks/images/fig_14_forecasts.png" alt="Observed and forecast non-western share by district" />
+      <p class="caption">
+        Figure 22. Observed and projected non-western share by district.
+      </p>
+    </div>
+
+    <p>
+      These forecasts are simple extrapolations based on historical trends.
+      Their value lies in illustrating direction and momentum rather than
+      exact future outcomes.
+    </p>
+
+    <div class="chart-card">
+      <img src="../notebooks/images/fig_15_forecast_bar.png" alt="2025 actual vs 2035 forecast by district" />
+      <p class="caption">
+        Figure 23. 2025 actual values compared with 2035 linear forecasts.
+      </p>
+    </div>
+
+    <p>
+      Some districts are projected to continue changing much faster than others.
+      Brønshøj-Husum and Bispebjerg remain among the strongest projected increases.
+    </p>
+
+    <p>
+      However, demographic trends are influenced by policy, housing markets,
+      migration flows, and economic conditions, meaning future trajectories
+      may diverge from these simple linear projections.
+    </p>
+
+    <div class="chart-card">
+      <iframe src="../notebooks/images/fig_16_population_forecast_line_chart.html" title="Interactive population forecast"></iframe>
+      <p class="caption">
+        Figure 24. Interactive population forecast.
+      </p>
     </div>
   </section>
 
-  <section>
+  <section id="conclusion">
     <h2>Conclusion</h2>
-    <p>Copenhagen's population story is not only about more people. It is about a changing urban composition that developed unevenly across space. The clearest takeaway is that internationalisation is both a city-wide trend and a neighbourhood-level pattern: to understand it, we need timelines, district comparisons, origin data, maps, and a little modelling behind the scenes.</p>
+
+    <p>
+      Copenhagen’s population story is not only about growth.
+      It is about how demographic transformation developed unevenly across urban space.
+    </p>
+
+    <p>
+      The analysis shows that internationalisation increased across the entire city,
+      but that districts followed very different trajectories. Some neighbourhoods
+      experienced especially rapid increases in international share, while others
+      changed more gradually or were already highly international decades ago.
+    </p>
+
+    <p>
+      The data also suggests that demographic change cannot be separated from
+      broader urban processes such as housing development, economic growth,
+      migration policy, and social inequality.
+    </p>
+
+    <p>
+      Importantly, the results challenge overly simplistic interpretations of
+      internationalisation. Highly international districts are not necessarily
+      economically declining districts. In several cases, diversity and income growth
+      increased simultaneously.
+    </p>
+
+    <p>
+      Ultimately, Copenhagen’s transformation reflects broader patterns observed
+      across many European cities: increasing diversity, spatial differentiation,
+      and the emergence of distinct neighbourhood trajectories over time.
+    </p>
+  </section>
+
+  <section id="references" class="references">
+    <h2>References</h2>
+
+    <ol>
+      <li>
+        Statistics Denmark. Population, ancestry, and income data used for the district-level analysis.
+      </li>
+
+      <li>
+        Copenhagen Municipality. District-level population and urban statistics.
+      </li>
+
+      <li>
+        Musterd, S., Marcińczak, S., van Ham, M., & Tammaru, T. (2017).
+        <em>Socioeconomic segregation in European capital cities: Increasing separation between poor and rich.</em>
+        Urban Geography.
+      </li>
+
+      <li>
+        OECD. (2018).
+        <em>Divided Cities: Understanding Intra-urban Inequalities.</em>
+        OECD Publishing.
+      </li>
+
+      <li>
+        European Commission. (2021).
+        <em>Migration and cities: Urban dimensions of migration and integration.</em>
+      </li>
+
+      <li>
+        Florida, R. (2017).
+        <em>The New Urban Crisis.</em>
+        Basic Books.
+      </li>
+
+      <li>
+        Massey, D. S. (1996).
+        <em>The age of extremes: Concentrated affluence and poverty in the twenty-first century.</em>
+        Demography.
+      </li>
+
+      <li>
+        Segel, E., & Heer, J. (2010).
+        <em>Narrative Visualization: Telling Stories with Data.</em>
+        IEEE Transactions on Visualization and Computer Graphics.
+      </li>
+    </ol>
   </section>
 
   <footer>
-    <p>All visual assets in this website are exported from <code>copenhagen_full_analysis.ipynb</code> and stored in the <code>notebooks/images/</code> and <code>notebooks/maps/</code> folders. The HTML does not manually recreate the charts; it loads notebook-generated PNGs and Folium HTML maps directly.</p>
+    <p>
+      All visual assets are exported from <code>copenhagen_full_analysis.ipynb</code>.
+      Static figures are stored in <code>notebooks/images/</code>, interactive figures in
+      the same folder as HTML files, and maps in <code>notebooks/maps/</code>.
+    </p>
   </footer>
+
 </main>
-<script>
-</script>
+
 </body>
 </html>

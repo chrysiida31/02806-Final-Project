@@ -14,6 +14,7 @@
       --soft:#f7f8fa;
       --accent:#2563eb;
       --dark:#172554;
+      --accent-soft:#eff6ff;
     }
 
     * { box-sizing: border-box; }
@@ -29,9 +30,9 @@
     }
 
     header {
-      padding: 70px 20px 48px;
+      padding: 76px 20px 52px;
       border-bottom: 1px solid var(--line);
-      background: var(--soft);
+      background: linear-gradient(180deg, #f7f8fa 0%, #ffffff 100%);
     }
 
     main {
@@ -59,6 +60,7 @@
       margin: .5rem 0 1rem;
       font-weight: 800;
       color: var(--dark);
+      max-width: 900px;
     }
 
     h2 {
@@ -88,6 +90,17 @@
       max-width: 840px;
     }
 
+    .thesis {
+      max-width: 840px;
+      margin-top: 20px;
+      padding: 18px 20px;
+      border-left: 4px solid var(--accent);
+      background: var(--accent-soft);
+      color: #1e3a8a;
+      font-weight: 700;
+      border-radius: 0 12px 12px 0;
+    }
+
     .note {
       color: var(--muted);
       font-size: .92rem;
@@ -107,6 +120,7 @@
       background: #fff;
       padding: 22px 26px;
       margin: 34px 0 44px;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);
     }
 
     .toc h2 {
@@ -122,9 +136,7 @@
       color: #374151;
     }
 
-    .toc li {
-      margin: 6px 0;
-    }
+    .toc li { margin: 6px 0; }
 
     .chart-card {
       border: 1px solid var(--line);
@@ -136,9 +148,7 @@
       box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
     }
 
-    .chart-card.wide {
-      max-width: 900px;
-    }
+    .chart-card.wide { max-width: 900px; }
 
     img {
       width: 100%;
@@ -156,9 +166,7 @@
       background: white;
     }
 
-    .map-frame {
-      height: 560px;
-    }
+    .map-frame { height: 560px; }
 
     .caption {
       margin-top: 12px;
@@ -178,14 +186,22 @@
       font-weight: 600;
     }
 
+    .interaction-note {
+      font-size: .9rem;
+      color: #1e3a8a;
+      background: var(--accent-soft);
+      padding: 10px 12px;
+      border-radius: 10px;
+      margin-top: 10px;
+      max-width: 780px;
+    }
+
     .references ol {
       max-width: 820px;
       color: #374151;
     }
 
-    .references li {
-      margin: 10px 0;
-    }
+    .references li { margin: 10px 0; }
 
     footer {
       border-top: 1px solid var(--line);
@@ -224,20 +240,29 @@
 <header>
   <div class="hero">
     <div class="eyebrow">02806 Social Data Analysis and Visualization</div>
+
     <h1>Copenhagen did not just grow. It changed shape.</h1>
+
     <p class="note">
       By Chrysiida Drakopoulou, Nicola Davalli, and Sammy Chauhan
     </p>
+
     <p class="lead">
       From 1995 to 2025, Copenhagen became larger and more international.
       This data story follows that transformation through city growth, district differences,
       origin communities, income patterns, maps, clustering, and future projections.
     </p>
+
+    <p class="thesis">
+      The core finding is that Copenhagen’s internationalisation was not evenly distributed:
+      some neighbourhoods transformed rapidly, while others changed more gradually or were already international decades ago.
+    </p>
+
     <p class="note">
-      <a href="https://github.com/chrysiida31/02806-Final-Project/blob/main/notebooks/copenhagen_full_analysis.ipynb">
+      <a href="https://github.com/chrysiida31/02806-Final-Project/blob/main/notebooks/copenhagen_full_analysis.ipynb" target="_blank">
         View the explainer notebook on GitHub
       </a>
-      for the technical analysis, data cleaning, code, and methodology.
+      for the technical analysis, data cleaning, code, methodology, and modelling details.
     </p>
   </div>
 </header>
@@ -312,15 +337,14 @@
     </div>
 
     <p>
-      The increase is not perfectly linear. Growth accelerated especially after
-      the financial crisis period and continued strongly through the 2010s.
-      This reflects Copenhagen’s broader urban expansion and increasing attractiveness
-      as both a residential and economic centre.
+      The increase is not perfectly linear. Growth appears stronger from the late 2000s onward
+      and continued through much of the 2010s. This pattern is consistent with Copenhagen’s
+      broader urban expansion and increasing attractiveness as both a residential and economic centre.
     </p>
 
     <p>
-      Importantly, this plot alone does not tell us anything about demographic
-      composition. A larger population does not necessarily mean a more international city.
+      Importantly, this plot alone does not tell us anything about demographic composition.
+      A larger population does not necessarily mean a more international city.
       To understand that, we need to move from total population to district-level composition.
     </p>
 
@@ -328,6 +352,9 @@
       <iframe src="images/fig_17_population_development_line_chart.html" title="Interactive Copenhagen population trend"></iframe>
       <p class="caption">
         Figure 2. Interactive population trend. Hovering makes the yearly values easier to inspect.
+      </p>
+      <p class="interaction-note">
+        Try hovering over the line to inspect exact values for individual years.
       </p>
     </div>
   </section>
@@ -345,7 +372,7 @@
       Urban researchers often describe this as uneven urban development:
       growth concentrates in some parts of the city more than others.
       Infrastructure investment, housing construction, accessibility,
-      and labour-market opportunities all influence where population growth occurs.
+      and labour-market opportunities can all influence where population growth occurs.
     </p>
 
     <div class="chart-card">
@@ -377,8 +404,8 @@
     <h2>3. The main story: Copenhagen became more international</h2>
 
     <p>
-      The key measure in this project is the share of residents with immigrant or
-      descendant background. Shares make districts comparable, even when they differ in size.
+      The key measure in this project is the share of residents with immigrant or descendant background.
+      Shares make districts comparable, even when districts differ in size.
     </p>
 
     <p>
@@ -396,8 +423,8 @@
     </div>
 
     <p>
-      All districts show upward movement, meaning internationalisation increased
-      across the entire city. However, the trajectories differ substantially.
+      All districts show upward movement, meaning internationalisation increased across the city.
+      However, the trajectories differ substantially.
     </p>
 
     <p>
@@ -462,6 +489,9 @@
       <p class="caption">
         Figure 7. Interactive heatmap. Readers can hover to compare exact values across districts and years.
       </p>
+      <p class="interaction-note">
+        Hover over individual cells to compare districts and years more precisely.
+      </p>
     </div>
   </section>
 
@@ -470,7 +500,7 @@
 
     <p>
       Maps place the district-level trends back onto Copenhagen. They show that
-      demographic change is not just a timeline, it also has a spatial pattern.
+      demographic change is not just a timeline; it also has a spatial pattern.
     </p>
 
     <p>
@@ -483,18 +513,20 @@
       <p class="caption">
         Figure 8. International share by district in 2025. The map shows where internationalisation is most concentrated.
       </p>
+      <p class="interaction-note">
+        Explore the map to compare districts spatially rather than only through charts.
+      </p>
     </div>
 
     <p>
-      The spatial pattern reveals that internationalisation is geographically clustered.
+      The spatial pattern shows that internationalisation is geographically clustered.
       Some districts contain substantially higher shares of residents with immigrant
       or descendant backgrounds than others.
     </p>
 
     <p>
-      The concentration of internationalisation in certain districts also reflects
-      broader urban processes such as housing affordability, accessibility,
-      and neighbourhood-level social networks.
+      This concentration may reflect broader urban processes such as housing affordability,
+      accessibility, and neighbourhood-level social networks.
     </p>
 
     <div class="chart-card wide">
@@ -509,11 +541,14 @@
       <p class="caption">
         Figure 10. Animated map showing how internationalisation developed across Copenhagen over time.
       </p>
+      <p class="interaction-note">
+        Use the animation controls to follow how the spatial pattern changes over time.
+      </p>
     </div>
 
     <p>
-      The animation shows that demographic change spreads gradually over time.
-      Instead of one sudden transformation, the pattern develops progressively across districts.
+      The animation shows that demographic change develops gradually over time.
+      Instead of one sudden transformation, the pattern progresses across districts.
     </p>
   </section>
 
@@ -578,7 +613,7 @@
     <p>
       Unlike the line chart, the stacked area chart emphasizes composition.
       The increasing total height shows the growth of the overall foreign-origin population,
-      while the changing coloured layers show shifts in the relative importance
+      while the changing layers show shifts in the relative importance
       of different communities.
     </p>
 
@@ -600,6 +635,9 @@
       <iframe src="images/fig_19_population_growth_bar_chart.html" title="Interactive population growth by origin country"></iframe>
       <p class="caption">
         Figure 15. Interactive ranking of origin countries by population growth.
+      </p>
+      <p class="interaction-note">
+        Hover over bars to inspect the growth of individual origin groups.
       </p>
     </div>
   </section>
@@ -664,15 +702,15 @@
     <h2>7. Finding neighbourhood types</h2>
 
     <p>
-      To simplify the many district-level patterns, the notebook groups districts with
-      similar internationalisation trajectories. This turns many lines into three readable
-      neighbourhood types: low, medium, and high internationalisation.
+      To better summarise long-term district trajectories, we used unsupervised clustering
+      to group districts with similar demographic development. This turns many separate lines
+      into three readable neighbourhood types: low, medium, and high internationalisation.
     </p>
 
     <p>
       Clustering helps reduce complexity. Instead of interpreting ten separate district trajectories,
       the method identifies broader neighbourhood types that share similar long-term patterns.
-      This approach is commonly used in exploratory urban analytics because it makes
+      This approach is useful in exploratory urban analytics because it makes
       high-dimensional demographic data easier to interpret visually.
     </p>
 
@@ -723,6 +761,9 @@
       <iframe src="images/fig_22_cluster_analysis_scatter_plot.html" title="Interactive cluster analysis scatter plot"></iframe>
       <p class="caption">
         Figure 21. Interactive cluster plot. Readers can inspect individual districts and compare cluster groups.
+      </p>
+      <p class="interaction-note">
+        Hover over points to see which districts belong to each neighbourhood type.
       </p>
     </div>
   </section>
@@ -779,6 +820,9 @@
       <p class="caption">
         Figure 24. Interactive population forecast.
       </p>
+      <p class="interaction-note">
+        Use the interactive chart to compare observed development with projected continuation.
+      </p>
     </div>
   </section>
 
@@ -815,75 +859,85 @@
       across many European cities: increasing diversity, spatial differentiation,
       and the emergence of distinct neighbourhood trajectories over time.
     </p>
+
+    <div class="callout">
+      Copenhagen’s demographic future will therefore depend not only on migration,
+      but also on housing, income, and where future growth is allowed to happen.
+    </div>
   </section>
 
-<section id="references" class="references">
-  <h2>References</h2>
+  <section id="references" class="references">
+    <h2>References</h2>
 
-  <ol>
+    <ol>
+      <li>
+        Statistics Denmark StatBank. (2025).
+        <em>Population, ancestry, and income datasets for Copenhagen Municipality.</em>
+        Retrieved from
+        <a href="https://www.statbank.dk/statbank5a/default.asp?w=1536" target="_blank">
+          https://www.statbank.dk
+        </a>
+      </li>
 
-    <li>
-      Statistics Denmark StatBank. Population, ancestry, and income datasets used throughout the analysis.
-      <a href="https://www.statbank.dk/statbank5a/default.asp?w=1536" target="_blank">
-        https://www.statbank.dk
-      </a>
-    </li>
+      <li>
+        Musterd, S., Marcińczak, S., van Ham, M., &amp; Tammaru, T. (2017).
+        <em>Socioeconomic segregation in European capital cities:
+        Increasing separation between poor and rich.</em>
+        Urban Geography, 38(7), 1062-1083.
+        <a href="https://www.tandfonline.com/doi/full/10.1080/02723638.2016.1228371" target="_blank">
+          Article link
+        </a>
+      </li>
 
-    <li>
-      Musterd, S., Marcińczak, S., van Ham, M., &amp; Tammaru, T. (2017).
-      <em>Socioeconomic segregation in European capital cities: Increasing separation between poor and rich.</em>
-      Urban Geography.
-      <a href="https://www.tandfonline.com/doi/full/10.1080/02723638.2016.1228371" target="_blank">
-        Article link
-      </a>
-    </li>
+      <li>
+        OECD. (2018).
+        <em>Divided Cities: Understanding Intra-urban Inequalities.</em>
+        OECD Publishing.
+        <a href="https://www.oecd.org/publications/divided-cities-9789264300385-en.htm" target="_blank">
+          OECD link
+        </a>
+      </li>
 
-    <li>
-      OECD. (2018).
-      <em>Divided Cities: Understanding Intra-urban Inequalities.</em>
-      OECD Publishing.
-      <a href="https://www.oecd.org/publications/divided-cities-9789264300385-en.htm" target="_blank">
-        OECD link
-      </a>
-    </li>
+      <li>
+        Florida, R. (2017).
+        <em>The New Urban Crisis:
+        How Our Cities Are Increasing Inequality, Deepening Segregation,
+        and Failing the Middle Class — and What We Can Do About It.</em>
+        Basic Books.
+        <a href="https://www.researchgate.net/publication/327796430_Richard_Florida_The_new_urban_crisis_how_our_cities_are_increasing_inequality_deepening_segregation_and_failing_the_middle_class-and_what_we_can_do_about_it_Basic_Books_2017_USD_2000_352pp_ISBN_978-0-" target="_blank">
+          ResearchGate link
+        </a>
+      </li>
 
-    <li>
-      Florida, R. (2017).
-      <em>The New Urban Crisis: How Our Cities Are Increasing Inequality, Deepening Segregation, and Failing the Middle Class-and What We Can Do About It.</em>
-      Basic Books.
-      <a href="https://www.researchgate.net/publication/327796430_Richard_Florida_The_new_urban_crisis_how_our_cities_are_increasing_inequality_deepening_segregation_and_failing_the_middle_class-and_what_we_can_do_about_it_Basic_Books_2017_USD_2000_352pp_ISBN_978-0-" target="_blank">
-        ResearchGate link
-      </a>
-    </li>
+      <li>
+        Massey, D. S. (1996).
+        <em>The age of extremes:
+        Concentrated affluence and poverty in the twenty-first century.</em>
+        Demography, 33(4), 395-412.
+        <a href="https://www.jstor.org/stable/2061773" target="_blank">
+          JSTOR link
+        </a>
+      </li>
 
-    <li>
-      Massey, D. S. (1996).
-      <em>The age of extremes: Concentrated affluence and poverty in the twenty-first century.</em>
-      Demography, 33(4), 395-412.
-      <a href="https://www.jstor.org/stable/2061773" target="_blank">
-        JSTOR link
-      </a>
-    </li>
+      <li>
+        Segel, E., &amp; Heer, J. (2010).
+        <em>Narrative Visualization: Telling Stories with Data.</em>
+        IEEE Transactions on Visualization and Computer Graphics,
+        16(6), 1139-1148.
+        <a href="https://ieeexplore.ieee.org/document/5613452" target="_blank">
+          IEEE link
+        </a>
+      </li>
+    </ol>
+  </section>
 
-    <li>
-      Segel, E., &amp; Heer, J. (2010).
-      <em>Narrative Visualization: Telling Stories with Data.</em>
-      IEEE Transactions on Visualization and Computer Graphics.
-      <a href="https://ieeexplore.ieee.org/document/5613452" target="_blank">
-        IEEE link
-      </a>
-    </li>
-
-  </ol>
-</section>
-
-<footer>
-  <p>
-    All visual assets are exported from <code>copenhagen_full_analysis.ipynb</code>.
-    Static and interactive figures are stored in <code>docs/images/</code>,
-    and maps are stored in <code>docs/maps/</code>.
-  </p>
-</footer>
+  <footer>
+    <p>
+      All visual assets are exported from <code>copenhagen_full_analysis.ipynb</code>.
+      Static and interactive figures are stored in <code>docs/images/</code>,
+      and maps are stored in <code>docs/maps/</code>.
+    </p>
+  </footer>
 
 </main>
 

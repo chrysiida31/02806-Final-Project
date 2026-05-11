@@ -24,7 +24,7 @@ Over the last 30 years, Copenhagen became both larger and more international. Ho
 
 The goal of this project is to explore:
 
-- how Copenhagen’s population changed from 1995–2025,
+- how Copenhagen’s population changed from 1995-2025,
 - where internationalisation was strongest,
 - how neighbourhood trajectories differ,
 - and how demographic change relates to spatial and socioeconomic patterns.
@@ -47,7 +47,7 @@ Main datasets include:
 
 The district-level dataset spans:
 
-- **1995–2025**
+- **1995-2025**
 - annual temporal resolution
 - all 10 major Copenhagen boroughs
 
